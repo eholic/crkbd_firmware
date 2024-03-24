@@ -80,8 +80,8 @@ bool oled_task_kb(void) {
 }
 #endif  // OLED_ENABLE
 
-// #ifdef RGB_MATRIX_ENABLE
-#ifdef LAYOUT_split_3x6_3
+#ifdef RGB_MATRIX_ENABLE
+// #ifdef LAYOUT_split_3x6_3
 
 // clang-format off
 /*
