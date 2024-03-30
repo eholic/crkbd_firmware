@@ -5,6 +5,8 @@
 // #define MASTER_RIGHT
 #define EE_HANDS
 
+#define QUICK_TAP_TERM 0
+
 #ifdef RGB_MATRIX_ENABLE
 #  define SPLIT_TRANSPORT_MIRROR
 #  define SPLIT_LAYER_STATE_ENABLE

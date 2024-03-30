@@ -3,6 +3,7 @@
 #include "keymap_japanese.h"
 #include "lib/keymap_us2jp.h"
 #include "lib/mylayer.h"
+#include "lib/ledmap.h"
 
 enum custom_keycodes {
   CS_ESC = NEW_SAFE_RANGE,
@@ -13,25 +14,25 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [KM_WIN] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-LGUI_T(KC_TAB),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LCTL,    KC_RCTL,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+LGUI_T(KC_TAB),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_WH_L,    KC_WH_R,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LALT,    KC_RALT,    KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN, UJ_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LALT,    KC_PSCR,    KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, UJ_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                   KC_LALT, LT(KM_SIG, JP_MHEN), LT(KM_NUM, KC_ENT),  LT(KM_NUM, KC_SPC), LT(KM_ARW, JP_HENK), CS_ESC
+                   KC_LALT, LT(KM_SIG, JP_MHEN), LT(KM_NUM, KC_SPC),  LT(KM_NUM, KC_SPC), LT(KM_ARW, JP_HENK), CS_ESC
                                       //`--------------------------'  `--------------------------'
   ),
 
   [KM_MAC] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LCTL,    KC_RCTL,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_WH_L,    KC_WH_R,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LALT,    KC_RALT,    KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN, UJ_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LALT,    KC_PSCR,    KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, UJ_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                  KC_LGUI, LT(KM_SIG,  KC_LNG2), LT(KM_NUM, KC_ENT),  LT(KM_NUM, KC_SPC), LT(KM_ARW,  KC_LNG1), CS_ESC
+                  KC_LGUI, LT(KM_SIG,  KC_LNG2), LT(KM_NUM, KC_SPC),  LT(KM_NUM, KC_SPC), LT(KM_ARW,  KC_LNG1), CS_ESC
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -100,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
 LGUI_T(KC_TAB),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN, UJ_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, UJ_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                   KC_LALT, LT(KM_SIG, JP_MHEN), LT(KM_NUM, KC_ENT),  LT(KM_NUM, KC_SPC), LT(KM_ARW, JP_HENK), CS_ESC
+                   KC_LALT, LT(KM_SIG, JP_MHEN), LT(KM_NUM, KC_SPC),  LT(KM_NUM, KC_SPC), LT(KM_ARW, JP_HENK), CS_ESC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -113,11 +114,11 @@ LGUI_T(KC_TAB),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN, UJ_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, UJ_SCLN,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, UJ_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                  KC_LGUI, LT(KM_SIG,  KC_LNG2), LT(KM_NUM, KC_ENT),  LT(KM_NUM, KC_SPC), LT(KM_ARW,  KC_LNG1), CS_ESC
+                  KC_LGUI, LT(KM_SIG,  KC_LNG2), LT(KM_NUM, KC_SPC),  LT(KM_NUM, KC_SPC), LT(KM_ARW,  KC_LNG1), CS_ESC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -193,3 +194,165 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return us2jp(keycode, record);
 }
+
+#ifdef RGB_MATRIX_ENABLE
+
+// clang-format off
+/*
+        {  24,  23,  18,  17,  10,   9 },          {  36,  37,  44,  45,  50,   51 },
+        {  25,  22,  19,  16,  11,   8 },          {  35,  38,  43,  46,  49,   52 },
+        {  26,  21,  20,  15,  12,   7 },          {  34,  39,  42,  47,  48,   53 },
+    { NO_LED, NO_LED, NO_LED,  14,  13,   6 }, { 33,  40,  41,  NO_LED, NO_LED, NO_LED }
+
+        {  18,  17,  12,  11,   4,   3,  21},  {44,   26,  27,  34,  35,  40,   41 },
+        {  19,  16,  13,  10,   5,   2,  22},  {45,   25,  28,  33,  36,  39,   42 },
+        {  20,  15,  14,   9,   6,   1 },          {  24,  29,  32,  37,  38,   43 },
+    { NO_LED, NO_LED, NO_LED,   8,   7,   0 }, { 23,  30,  31,  NO_LED, NO_LED, NO_LED }
+*/
+// clang-format on
+
+void set_color(int index, uint8_t hsvred, uint8_t hsvgreen, uint8_t hsvblue) {
+  HSV hsv = (HSV){hsvred, hsvgreen, hsvblue};
+  if (hsv.v > rgb_matrix_get_val()) {
+    hsv.v = rgb_matrix_get_val();
+  }
+  RGB rgb = hsv_to_rgb(hsv);
+  rgb_matrix_set_color(index, rgb.r, rgb.g, rgb.b);
+}
+
+void set_color_all(uint8_t hsvred, uint8_t hsvgreen, uint8_t hsvblue) {
+  HSV hsv = (HSV){hsvred, hsvgreen, hsvblue};
+  if (hsv.v > rgb_matrix_get_val()) {
+    hsv.v = rgb_matrix_get_val();
+  }
+  RGB rgb = hsv_to_rgb(hsv);
+  rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b);
+}
+
+// #ifdef   LAYOUT_split_3x6_3
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+  if (rgb_matrix_get_mode() != 1) {
+    return false;
+  }
+
+  rgb_matrix_set_color_all(RGB_OFF);
+
+  switch (get_highest_layer(layer_state | default_layer_state)) {
+    case KM_NUM:
+      if (is_keyboard_left()) {
+        // left
+        set_color(LD_A, HSV_YELLOW);
+        set_color(LD_S, HSV_YELLOW);
+        set_color(LD_D, HSV_YELLOW);
+        set_color(LD_F, HSV_YELLOW);
+        set_color(LD_G, HSV_YELLOW);
+      } else {
+        // right
+        set_color(LD_H, HSV_YELLOW);
+        set_color(LD_J, HSV_YELLOW);
+        set_color(LD_K, HSV_YELLOW);
+        set_color(LD_L, HSV_YELLOW);
+        set_color(LD_SCLN, HSV_YELLOW);
+        set_color(LD_U, HSV_BLUE);
+        set_color(LD_I, HSV_BLUE);
+        set_color(LD_O, HSV_BLUE);
+        set_color(LD_P, HSV_BLUE);
+
+        set_color(LD_BSPC, HSV_RED);
+      }
+      break;
+    case KM_SIG:
+      if (is_keyboard_left()) {
+        // left
+        set_color(LD_A, HSV_BLUE);
+        set_color(LD_S, HSV_BLUE);
+        set_color(LD_D, HSV_BLUE);
+        set_color(LD_F, HSV_BLUE);
+        set_color(LD_G, HSV_BLUE);
+        set_color(LD_Q, HSV_BLUE);
+      } else {
+        // right
+        set_color(LD_H, HSV_BLUE);
+        set_color(LD_J, HSV_BLUE);
+        set_color(LD_K, HSV_BLUE);
+        set_color(LD_L, HSV_BLUE);
+        set_color(LD_SCLN, HSV_BLUE);
+        set_color(LD_QUOT, HSV_BLUE);
+
+        set_color(LD_U, HSV_BLUE);
+        set_color(LD_I, HSV_BLUE);
+        set_color(LD_O, HSV_BLUE);
+        set_color(LD_P, HSV_BLUE);
+
+        set_color(LD_BSPC, HSV_RED);
+      }
+      break;
+    case KM_FN:
+      if (is_keyboard_left()) {
+        // left
+        set_color(LD_LCTL, HSV_GOLDENROD);
+        set_color(LD_A, HSV_GOLDENROD);
+        set_color(LD_S, HSV_GOLDENROD);
+        set_color(LD_D, HSV_GOLDENROD);
+        set_color(LD_F, HSV_GOLDENROD);
+        set_color(LD_G, HSV_GOLDENROD);
+      } else {
+        // right
+        set_color(LD_H, HSV_GOLDENROD);
+        set_color(LD_J, HSV_GOLDENROD);
+        set_color(LD_K, HSV_GOLDENROD);
+        set_color(LD_L, HSV_GOLDENROD);
+        set_color(LD_SCLN, HSV_GOLDENROD);
+        set_color(LD_QUOT, HSV_GOLDENROD);
+      }
+      break;
+    case KM_ARW:
+#ifdef LAYOUT_split_3x6_3_ex2
+      // show win/mac
+      if (IS_LAYER_ON_STATE(layer_state, KM_MAC)) {
+        set_color_all(HSV_CORAL);
+      } else {
+        set_color_all(HSV_BLUE);
+      }
+#else
+      if (is_keyboard_left()) {
+        // left
+        set_color(LD_A, HSV_MAGENTA);
+        set_color(LD_S, HSV_MAGENTA);
+        set_color(LD_D, HSV_MAGENTA);
+        set_color(LD_F, HSV_MAGENTA);
+
+        set_color(LD_Z, HSV_MAGENTA);
+        set_color(LD_X, HSV_MAGENTA);
+        set_color(LD_C, HSV_MAGENTA);
+        set_color(LD_V, HSV_MAGENTA);
+      } else {
+        // right
+        set_color(LD_H, HSV_GREEN);
+        set_color(LD_J, HSV_GREEN);
+        set_color(LD_K, HSV_GREEN);
+        set_color(LD_L, HSV_GREEN);
+
+        set_color(LD_Y, HSV_ORANGE);
+        set_color(LD_U, HSV_BLUE);
+        set_color(LD_I, HSV_BLUE);
+        set_color(LD_O, HSV_ORANGE);
+
+        // show win/mac
+        if (IS_LAYER_ON_STATE(layer_state, KM_MAC)) {
+          set_color(LD_MM, HSV_CORAL);
+        } else {
+          set_color(LD_MM, HSV_BLUE);
+        }
+      }
+#endif
+      break;
+    default:
+      break;
+  }
+  return false;
+}
+
+// #endif  // LAYOUT_split_3x6_3
+
+#endif  // RGB_MATRIX_ENABLE
